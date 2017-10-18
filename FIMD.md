@@ -154,7 +154,7 @@ tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp),
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-4-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-4-1.png" width="633.6" />
 
 ### Section 1.3.4 Regression imputation
 
@@ -188,7 +188,7 @@ tp <- xyplot(imp, Ozone ~ Solar.R, ylab = "Ozone (ppb)",
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-5-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-5-1.png" width="633.6" />
 
 ### Section 1.3.5 Stochastic regression imputation
 
@@ -218,7 +218,7 @@ tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp),
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-6-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-6-1.png" width="633.6" />
 
 ### Section 1.3.6 LOCF and BOCF
 
@@ -243,7 +243,7 @@ plot(Ozi[1:80], col = colvec, type = "l", xlab = "Day number",
 points(Ozi[1:80], col = colvec, pch = 20, cex = 1)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-7-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-7-1.png" width="633.6" />
 
 ### Section 1.4.3 Example of multiple imputation
 
@@ -289,7 +289,7 @@ tp <- xyplot(imp, Ozone ~ Solar.R, subset = .imp == 1, ylab = "Ozone (ppb)",
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-8-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-8-1.png" width="633.6" />
 
 ``` r
 ### scatterplot of all imputed data sets (not in the book)
@@ -298,7 +298,7 @@ xyplot(imp, Ozone ~ Solar.R | .imp, ylab = "Ozone (ppb)",
     ylim = c(-20, 180), xlim = c(0, 350))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-1.png" width="633.6" />
 
 ``` r
 ### Figure 1.7
@@ -324,7 +324,7 @@ points(x = x, y = complete(imp, 5)$Ozone[idx], col = mdc(2),
     pch = 20, cex = 1)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-2.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-2.png" width="633.6" />
 
 ``` r
 ### figure of the autocorrelation function (not in the
@@ -336,7 +336,7 @@ model <- expression(acf(resid(lm(Ozone ~ Wind + Temp + Solar.R))))
 acf.resid <- with(imp, model)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-10-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-10-1.png" width="633.6" />
 
 ``` r
 calcacf <- function(acf.list) {
@@ -389,7 +389,7 @@ legend(x = 1975, y = 200, legend = c("early publications",
     pch = c(16, 2, 15), bty = "n")
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-11-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-11-1.png" width="633.6" />
 
 ### Section 2.2.4 MCAR, MAR and MNAR again
 
@@ -424,7 +424,7 @@ tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE,
 print(tp)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-12-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-12-1.png" width="633.6" />
 
 ### Section 2.3.7 Numerical example
 
@@ -613,7 +613,7 @@ legend(x = "bottomleft", legend = c("before insulation",
 text(x = 9, y = 6.5, label = "f", cex = 2)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-14-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-14-1.png" width="633.6" />
 
 ### Section 3.2.3 Performance
 
@@ -760,7 +760,7 @@ legend(x = "top", bty = "n", legend = c("MARRIGHT", "MARMID",
     "MARTAIL"), lty = 1:3, lwd = 2, col = mdc(5), cex = 0.8)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-17-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-17-1.png" width="633.6" />
 
 ``` r
 ### Figure 3.3
@@ -787,7 +787,7 @@ tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE,
 print(tp)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-18-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-18-1.png" width="633.6" />
 
 ### Section 3.2.2 Imputation from the t-distribution
 
@@ -854,7 +854,7 @@ plot(x = data$age, y = data$hc, col = mdc(1), cex = 0.3,
     ylim = c(39, 60))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-20-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-20-1.png" width="633.6" />
 
 ``` r
 ### create a synthetic data set
@@ -890,7 +890,7 @@ legend(x = "right", legend = c("normal", paste("t, df=",
     bty = "n", cex = 0.7)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-1.png" width="633.6" />
 
 ``` r
 plot(x = data$age, y = data$hc, col = mdc(2), cex = 0.3, 
@@ -898,7 +898,7 @@ plot(x = data$age, y = data$hc, col = mdc(2), cex = 0.3,
     ylim = c(39, 60))
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-2.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-2.png" width="633.6" />
 
 ### Section 3.4.1 PMM, Overview
 
@@ -917,14 +917,14 @@ plot(data, col = mdc(1), xlab = "Age", ylab = "BMI")
 points(cd1[!r, ], col = mdc(2), pch = 19, cex = 0.8)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-22-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-22-1.png" width="633.6" />
 
 ``` r
 plot(data, col = mdc(1), xlab = "Age", ylab = "BMI")
 points(cd2[!r, ], col = mdc(2), pch = 19, cex = 0.8)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-22-2.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-22-2.png" width="633.6" />
 
 ### Section 3.4.2 PMM, Computational details
 
@@ -987,7 +987,7 @@ legend(x = "bottomleft", legend = c("before insulation",
     "after insulation"), pch = c(3, 1), bty = "n", pt.lwd = lwd)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-23-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-23-1.png" width="633.6" />
 
 ### Section 3.4.3 PMM, Algorithm
 
@@ -1039,7 +1039,7 @@ text(x = whiteside$Temp, y = whiteside$Gas, label = label,
     col = mdc(4), cex = 0.6)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-25-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-25-1.png" width="633.6" />
 
 ### Section 3.9.4 Converting selection and pattern-mixture models
 
@@ -1066,7 +1066,7 @@ matplot(x = xx, y = sm[, 2:4], type = "s", col = c(mdc(4),
     ylab = "Density")
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-26-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-26-1.png" width="633.6" />
 
 Chapter 4 Multivariate missing data
 -----------------------------------
@@ -1101,7 +1101,7 @@ tp41 <- levelplot(r ~ var + rec | as.factor(pat), data = mdpat,
 print(tp41)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-27-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-27-1.png" width="633.6" />
 
 ``` r
 md.pattern(pattern4)
@@ -1180,7 +1180,7 @@ fluxplot(pattern4, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1,
 text(x = 0.5, y = 1, label = "General")
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-28-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-28-1.png" width="633.6" />
 
 ``` r
 ### calculate pobs, influx, outflux of general pattern
@@ -1298,7 +1298,7 @@ tp43 <- xyplot(rY1Y2 ~ iteration | as.factor(k), group = m,
 print(tp43)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-31-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-31-1.png" width="633.6" />
 
 ### Section 4.6.3 Illustration
 
@@ -1331,7 +1331,7 @@ tp44 <- xyplot(jm.10, gen ~ age | .imp, subset = as.integer(.imp) <
 print(tp44)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-32-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-32-1.png" width="633.6" />
 
 ``` r
 ### Figure 4.5
@@ -1340,7 +1340,7 @@ tp45 <- xyplot(fcs.10, gen ~ age | .imp, subset = as.integer(.imp) <
 print(tp45)
 ```
 
-<img src="FIMD_files/figure-markdown_github/unnamed-chunk-33-1.png" width="615.36" />
+<img src="FIMD_files/figure-markdown_github/unnamed-chunk-33-1.png" width="633.6" />
 
 ``` r
 ### Figure 4.6 is too complex, and will not be given here

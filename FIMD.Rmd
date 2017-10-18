@@ -13,7 +13,7 @@ vignette: >
 ---
 
 ```{r include=FALSE} 
-knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 6.41, 
+knitr::opts_chunk$set(echo = TRUE, fig.height = 5, fig.width = 6.6, 
                       tidy = TRUE, fig.retina = 2)
 options(digits = 3, width = 55)
 set.seed(92622)
