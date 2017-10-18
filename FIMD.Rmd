@@ -15,7 +15,7 @@ vignette: >
 ```{r include=FALSE} 
 knitr::opts_chunk$set(echo = TRUE, fig.height = 4, fig.width = 6, 
                       tidy = TRUE, fig.retina = 2)
-options(digits = 3)
+options(digits = 3, width = 70)
 set.seed(92622)
 ```
 
