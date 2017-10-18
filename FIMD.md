@@ -13,7 +13,8 @@ mean(y)
     ## [1] 2.33
 
 ``` r
-### calculate the mean of three numbers, where one is missing
+### calculate the mean of three numbers, where one is
+### missing
 y <- c(1, 2, NA)
 mean(y)
 ```
@@ -31,12 +32,15 @@ mean(y, na.rm = TRUE)
 ### store your current options (safety measure)
 youroptions <- options()
 
-### demo regression that generates an error message using default na.fail
+### demo regression that generates an error message using
+### default na.fail
 options(na.action = na.fail)
 
-### uncomment to see the error lm(Ozone ~ Wind, data=airquality)
+### uncomment to see the error lm(Ozone ~ Wind,
+### data=airquality)
 
-### remove incomplete observations by 'na.action = na.omit'
+### remove incomplete observations by 'na.action =
+### na.omit'
 fit <- lm(Ozone ~ Wind, data = airquality, na.action = na.omit)
 coef(fit)
 ```
@@ -83,13 +87,20 @@ colMeans(airquality, na.rm = TRUE)
 cor(airquality, use = "pair")
 ```
 
-    ##           Ozone Solar.R    Wind   Temp    Month      Day
-    ## Ozone    1.0000  0.3483 -0.6015  0.698  0.16452 -0.01323
-    ## Solar.R  0.3483  1.0000 -0.0568  0.276 -0.07530 -0.15027
-    ## Wind    -0.6015 -0.0568  1.0000 -0.458 -0.17829  0.02718
-    ## Temp     0.6984  0.2758 -0.4580  1.000  0.42095 -0.13059
-    ## Month    0.1645 -0.0753 -0.1783  0.421  1.00000 -0.00796
-    ## Day     -0.0132 -0.1503  0.0272 -0.131 -0.00796  1.00000
+    ##           Ozone Solar.R    Wind   Temp    Month
+    ## Ozone    1.0000  0.3483 -0.6015  0.698  0.16452
+    ## Solar.R  0.3483  1.0000 -0.0568  0.276 -0.07530
+    ## Wind    -0.6015 -0.0568  1.0000 -0.458 -0.17829
+    ## Temp     0.6984  0.2758 -0.4580  1.000  0.42095
+    ## Month    0.1645 -0.0753 -0.1783  0.421  1.00000
+    ## Day     -0.0132 -0.1503  0.0272 -0.131 -0.00796
+    ##              Day
+    ## Ozone   -0.01323
+    ## Solar.R -0.15027
+    ## Wind     0.02718
+    ## Temp    -0.13059
+    ## Month   -0.00796
+    ## Day      1.00000
 
 ``` r
 cov(airquality, use = "pair")
@@ -132,12 +143,14 @@ mis <- imp$imp$Ozone[, 1]
 fobs <- c(hist(obs, breaks, plot = FALSE)$counts, 0)
 fmis <- c(hist(mis, breaks, plot = FALSE)$counts, 0)
 y <- matrix(c(fobs, fmis), ncol = 2)
-matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, lty = 1, xlim = c(0, 
-    170), ylim = c(0, 40), yaxs = "i", xlab = "Ozone (ppb)", ylab = "Frequency")
+matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, 
+    lty = 1, xlim = c(0, 170), ylim = c(0, 40), yaxs = "i", 
+    xlab = "Ozone (ppb)", ylab = "Frequency")
 box()
-tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp), ylab = "Ozone (ppb)", 
-    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, ylim = c(-20, 
-        180), xlim = c(0, 350))
+tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp), 
+    ylab = "Ozone (ppb)", xlab = "Solar Radiation (lang)", 
+    cex = 0.75, lex = lwd, ylim = c(-20, 180), xlim = c(0, 
+        350))
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
@@ -150,8 +163,8 @@ fit <- lm(Ozone ~ Solar.R, data = airquality)
 pred <- predict(fit, newdata = ic(airquality))
 
 ### alternative using mice
-imp <- mice(airquality[, 1:2], method = "norm.predict", m = 1, maxit = 3, 
-    seed = 1)
+imp <- mice(airquality[, 1:2], method = "norm.predict", 
+    m = 1, maxit = 3, seed = 1)
 ```
 
     ## 
@@ -165,11 +178,13 @@ imp <- mice(airquality[, 1:2], method = "norm.predict", m = 1, maxit = 3,
 par(mfrow = c(1, 2))
 fmis <- c(hist(pred, breaks, plot = FALSE)$counts, 0)
 y <- matrix(c(fobs, fmis), ncol = 2)
-matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, lty = 1, xlim = c(0, 
-    170), ylim = c(0, 40), yaxs = "i", xlab = "Ozone (ppb)", ylab = "Frequency")
+matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, 
+    lty = 1, xlim = c(0, 170), ylim = c(0, 40), yaxs = "i", 
+    xlab = "Ozone (ppb)", ylab = "Frequency")
 box()
-tp <- xyplot(imp, Ozone ~ Solar.R, ylab = "Ozone (ppb)", xlab = "Solar Radiation (lang)", 
-    cex = 0.75, lex = lwd, ylim = c(-20, 180), xlim = c(0, 350))
+tp <- xyplot(imp, Ozone ~ Solar.R, ylab = "Ozone (ppb)", 
+    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, 
+    ylim = c(-20, 180), xlim = c(0, 350))
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
@@ -178,7 +193,8 @@ print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ### Section 1.3.5 Stochastic regression imputation
 
 ``` r
-imp <- mice(airquality[, 1:2], method = "norm.nob", m = 1, maxit = 1, seed = 1)
+imp <- mice(airquality[, 1:2], method = "norm.nob", m = 1, 
+    maxit = 1, seed = 1)
 ```
 
     ## 
@@ -191,12 +207,14 @@ par(mfrow = c(1, 2))
 mis <- imp$imp$Ozone[, 1]
 fmis <- c(hist(mis, breaks, plot = FALSE)$counts, 0)
 y <- matrix(c(fobs, fmis), ncol = 2)
-matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, lty = 1, xlim = c(0, 
-    170), ylim = c(0, 40), yaxs = "i", xlab = "Ozone (ppb)", ylab = "Frequency")
+matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, 
+    lty = 1, xlim = c(0, 170), ylim = c(0, 40), yaxs = "i", 
+    xlab = "Ozone (ppb)", ylab = "Frequency")
 box()
-tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp), ylab = "Ozone (ppb)", 
-    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, ylim = c(-20, 
-        180), xlim = c(0, 350))
+tp <- xyplot(imp, Ozone ~ Solar.R, na.groups = ici(imp), 
+    ylab = "Ozone (ppb)", xlab = "Solar Radiation (lang)", 
+    cex = 0.75, lex = lwd, ylim = c(-20, 180), xlim = c(0, 
+        350))
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
@@ -220,7 +238,8 @@ colvec <- ifelse(is.na(Oz), mdc(2), mdc(1))
 
 ### Figure 1.4
 
-plot(Ozi[1:80], col = colvec, type = "l", xlab = "Day number", ylab = "Ozone (ppb)")
+plot(Ozi[1:80], col = colvec, type = "l", xlab = "Day number", 
+    ylab = "Ozone (ppb)")
 points(Ozi[1:80], col = colvec, pch = 20, cex = 1)
 ```
 
@@ -242,7 +261,8 @@ tab[, c(1:3, 5)]
     ## Solar.R       0.061  0.022  2.73    0.008
 
 ``` r
-fit <- lm(Ozone ~ Wind + Temp + Solar.R, data = airquality, na.action = na.omit)
+fit <- lm(Ozone ~ Wind + Temp + Solar.R, data = airquality, 
+    na.action = na.omit)
 round(coef(summary(fit)), 3)
 ```
 
@@ -258,13 +278,14 @@ par(mfrow = c(1, 2))
 mis <- imp$imp$Ozone[, 1]
 fmis <- c(hist(mis, breaks, plot = FALSE)$counts, 0)
 y <- matrix(c(fobs, fmis), ncol = 2)
-matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, lty = 1, xlim = c(0, 
-    170), ylim = c(0, 40), yaxs = "i", xlab = "Ozone (ppb)", ylab = "Frequency")
+matplot(x, y, type = "s", col = c(mdc(4), mdc(5)), lwd = 2, 
+    lty = 1, xlim = c(0, 170), ylim = c(0, 40), yaxs = "i", 
+    xlab = "Ozone (ppb)", ylab = "Frequency")
 box()
 
 tp <- xyplot(imp, Ozone ~ Solar.R, subset = .imp == 1, ylab = "Ozone (ppb)", 
-    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, ylim = c(-20, 
-        180), xlim = c(0, 350))
+    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, 
+    ylim = c(-20, 180), xlim = c(0, 350))
 print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 ```
 
@@ -272,8 +293,9 @@ print(tp, newpage = FALSE, position = c(0.48, 0.08, 1, 0.92))
 
 ``` r
 ### scatterplot of all imputed data sets (not in the book)
-xyplot(imp, Ozone ~ Solar.R | .imp, ylab = "Ozone (ppb)", xlab = "Solar Radiation (lang)", 
-    cex = 0.75, lex = lwd, ylim = c(-20, 180), xlim = c(0, 350))
+xyplot(imp, Ozone ~ Solar.R | .imp, ylab = "Ozone (ppb)", 
+    xlab = "Solar Radiation (lang)", cex = 0.75, lex = lwd, 
+    ylim = c(-20, 180), xlim = c(0, 350))
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-1.png" width="576" />
@@ -284,27 +306,29 @@ xyplot(imp, Ozone ~ Solar.R | .imp, ylab = "Ozone (ppb)", xlab = "Solar Radiatio
 Oz <- airquality$Ozone
 colvec <- ifelse(is.na(Oz), mdc(2), mdc(1))
 par(mfrow = c(1, 1))
-plot(Oz[1:80], col = mdc(1), type = "l", xlab = "Day number", ylab = "Ozone (ppb)")
+plot(Oz[1:80], col = mdc(1), type = "l", xlab = "Day number", 
+    ylab = "Ozone (ppb)")
 points(Oz[1:80], col = mdc(1), pch = 20, cex = 1)
 
 idx <- ici(airquality$Ozone) & (1:153) < 81
 x <- (1:153)[idx]
-points(x = x, y = complete(imp, 1)$Ozone[idx], col = mdc(2), pch = 20, 
-    cex = 1)
-points(x = x, y = complete(imp, 2)$Ozone[idx], col = mdc(2), pch = 20, 
-    cex = 1)
-points(x = x, y = complete(imp, 3)$Ozone[idx], col = mdc(2), pch = 20, 
-    cex = 1)
-points(x = x, y = complete(imp, 4)$Ozone[idx], col = mdc(2), pch = 20, 
-    cex = 1)
-points(x = x, y = complete(imp, 5)$Ozone[idx], col = mdc(2), pch = 20, 
-    cex = 1)
+points(x = x, y = complete(imp, 1)$Ozone[idx], col = mdc(2), 
+    pch = 20, cex = 1)
+points(x = x, y = complete(imp, 2)$Ozone[idx], col = mdc(2), 
+    pch = 20, cex = 1)
+points(x = x, y = complete(imp, 3)$Ozone[idx], col = mdc(2), 
+    pch = 20, cex = 1)
+points(x = x, y = complete(imp, 4)$Ozone[idx], col = mdc(2), 
+    pch = 20, cex = 1)
+points(x = x, y = complete(imp, 5)$Ozone[idx], col = mdc(2), 
+    pch = 20, cex = 1)
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-9-2.png" width="576" />
 
 ``` r
-### figure of the autocorrelation function (not in the book)
+### figure of the autocorrelation function (not in the
+### book)
 
 par(mfrow = c(2, 5))
 acf.ozone <- with(imp, acf(Ozone))
@@ -333,33 +357,36 @@ library("mice")
 library("lattice")
 library("MASS")
 
-### Section 2.1.3 The expanding literature on multiple imputation Figure
-### 2.1
+### Section 2.1.3 The expanding literature on multiple
+### imputation Figure 2.1
 
-cit <- c(2010, 37, 182, NA, 2009, 36, 129, NA, 2008, 27, 111, NA, 2007, 
-    35, 136, NA, 2006, 18, 80, NA, 2005, 20, 76, NA, 2004, 6, 56, NA, 2003, 
-    17, 42, NA, 2002, 14, 40, NA, 2001, 13, 36, 57, 2000, 8, 21, 33, 1999, 
-    6, 25, 47, 1998, 6, 13, 22, 1997, 6, 18, 29, 1996, 4, 12, 28, 1995, 
-    3, 5, 20, 1994, 2, 5, 34, 1993, 2, 6, 15, 1991, 2, 4, 19, 1990, 1, 
-    2, 15, 1989, NA, NA, 11, 1988, 1, NA, 13, 1987, NA, NA, 10, 1986, NA, 
-    NA, 5, 1985, NA, NA, 1, 1984, NA, NA, 2, 1983, NA, NA, 5, 1982, NA, 
-    NA, 2, 1981, NA, NA, 1, 1980, NA, NA, 5, 1979, NA, NA, 2, 1978, NA, 
-    NA, 1, 1977, NA, NA, 2)
+cit <- c(2010, 37, 182, NA, 2009, 36, 129, NA, 2008, 27, 
+    111, NA, 2007, 35, 136, NA, 2006, 18, 80, NA, 2005, 
+    20, 76, NA, 2004, 6, 56, NA, 2003, 17, 42, NA, 2002, 
+    14, 40, NA, 2001, 13, 36, 57, 2000, 8, 21, 33, 1999, 
+    6, 25, 47, 1998, 6, 13, 22, 1997, 6, 18, 29, 1996, 4, 
+    12, 28, 1995, 3, 5, 20, 1994, 2, 5, 34, 1993, 2, 6, 
+    15, 1991, 2, 4, 19, 1990, 1, 2, 15, 1989, NA, NA, 11, 
+    1988, 1, NA, 13, 1987, NA, NA, 10, 1986, NA, NA, 5, 
+    1985, NA, NA, 1, 1984, NA, NA, 2, 1983, NA, NA, 5, 1982, 
+    NA, NA, 2, 1981, NA, NA, 1, 1980, NA, NA, 5, 1979, NA, 
+    NA, 2, 1978, NA, NA, 1, 1977, NA, NA, 2)
 cit <- matrix(cit, nr = 2010 - 1977, nc = 4, byrow = TRUE)
 cit <- as.data.frame(cit)
 names(cit) <- c("Year", "Title", "Abstract", "All")
 par(mfrow = c(1, 1))
 par(cex = 0.7, lwd = 0.5)
-plot(x = cit$Year, y = cit$Abstract, type = "o", log = "y", xlim = c(1975, 
-    2010), ylim = c(1, 200), ylab = "Number of publications (log)", xlab = "Year", 
-    pch = 2, axes = FALSE)
+plot(x = cit$Year, y = cit$Abstract, type = "o", log = "y", 
+    xlim = c(1975, 2010), ylim = c(1, 200), ylab = "Number of publications (log)", 
+    xlab = "Year", pch = 2, axes = FALSE)
 axis(1, lwd = par("lwd"))
 axis(2, lwd = par("lwd"), las = 1)
 # box(lwd=0.5)
 lines(x = cit$Year, y = cit$Title, pch = 15, type = "o")
 lines(x = cit$Year, y = cit$All, pch = 16, type = "o")
-legend(x = 1975, y = 200, legend = c("early publications", "'multiple imputation' in abstract", 
-    "'multiple imputation' in title"), pch = c(16, 2, 15), bty = "n")
+legend(x = 1975, y = 200, legend = c("early publications", 
+    "'multiple imputation' in abstract", "'multiple imputation' in title"), 
+    pch = c(16, 2, 15), bty = "n")
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-11-1.png" width="576" />
@@ -370,7 +397,8 @@ legend(x = 1975, y = 200, legend = c("early publications", "'multiple imputation
 logistic <- function(x) exp(x)/(1 + exp(x))
 set.seed(80122)
 n <- 300
-y <- mvrnorm(n = n, mu = c(0, 0), Sigma = matrix(c(1, 0.5, 0.5, 1), nrow = 2))
+y <- mvrnorm(n = n, mu = c(0, 0), Sigma = matrix(c(1, 0.5, 
+    0.5, 1), nrow = 2))
 y1 <- y[, 1]
 y2 <- y[, 2]
 r2.mcar <- 1 - rbinom(n, 1, 0.5)
@@ -382,14 +410,17 @@ r2.mnar <- 1 - rbinom(n, 1, logistic(y2))
 y3 <- rbind(y, y, y)
 r2 <- c(r2.mcar, r2.mar, r2.mnar)
 r2 <- factor(r2, labels = c("Ymis", "Yobs"))
-typ <- factor(rep(3:1, each = n), labels = c("MNAR", "MAR", "MCAR"))
+typ <- factor(rep(3:1, each = n), labels = c("MNAR", "MAR", 
+    "MCAR"))
 d <- data.frame(y1 = y3[, 1], y2 = y3[, 2], r2 = r2, typ = typ)
-trellis.par.set(box.rectangle = list(col = c(mdc(2), mdc(1)), lwd = 1.2))
-trellis.par.set(box.umbrella = list(col = c(mdc(2), mdc(1)), lwd = 1.2))
+trellis.par.set(box.rectangle = list(col = c(mdc(2), mdc(1)), 
+    lwd = 1.2))
+trellis.par.set(box.umbrella = list(col = c(mdc(2), mdc(1)), 
+    lwd = 1.2))
 trellis.par.set(plot.symbol = list(col = mdc(3), lwd = 1))
-tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE, layout = c(1, 
-    3), xlab = expression(Y^2), col = c(mdc(2), mdc(1)), strip = FALSE, 
-    xlim = c(-3, 3), strip.left = strip.custom(bg = "grey95"))
+tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE, 
+    layout = c(1, 3), xlab = expression(Y^2), col = c(mdc(2), 
+        mdc(1)), strip = FALSE, xlim = c(-3, 3), strip.left = strip.custom(bg = "grey95"))
 print(tp)
 ```
 
@@ -404,9 +435,10 @@ est <- pool(fit)
 names(est)
 ```
 
-    ##  [1] "call"   "call1"  "call2"  "nmis"   "m"      "qhat"   "u"     
-    ##  [8] "qbar"   "ubar"   "b"      "t"      "r"      "dfcom"  "df"    
-    ## [15] "fmi"    "lambda"
+    ##  [1] "call"   "call1"  "call2"  "nmis"   "m"     
+    ##  [6] "qhat"   "u"      "qbar"   "ubar"   "b"     
+    ## [11] "t"      "r"      "dfcom"  "df"     "fmi"   
+    ## [16] "lambda"
 
 ``` r
 attach(est)
@@ -457,11 +489,12 @@ library("gamlss")
 ``` r
 library("rpart")
 
-### In order to draw figure 3.1, we define two tweaked mice.impute.xxx
-### functions that will store the coefficients of the imputation models
-### in the global environment.  Normally, we would not be so interested
-### in the parameter estimates of the imputation model, but here we need
-### them for Figure 3.1.
+### In order to draw figure 3.1, we define two tweaked
+### mice.impute.xxx functions that will store the
+### coefficients of the imputation models in the global
+### environment.  Normally, we would not be so interested
+### in the parameter estimates of the imputation model,
+### but here we need them for Figure 3.1.
 mice.impute.normdump <- function(y, ry, x, ...) {
     x <- cbind(1, as.matrix(x))
     parm <- .norm.draw(y, ry, x, ...)
@@ -474,8 +507,8 @@ mice.impute.pmmdump <- function(y, ry, x, ...) {
     yhatobs <- x[ry, ] %*% parm$coef
     yhatmis <- x[!ry, ] %*% parm$beta
     betadump <<- c(betadump, parm$beta)
-    return(apply(as.array(yhatmis), 1, .pmm.match, yhat = yhatobs, y = y[ry], 
-        ...))
+    return(apply(as.array(yhatmis), 1, .pmm.match, yhat = yhatobs, 
+        y = y[ry], ...))
 }
 
 
@@ -483,63 +516,77 @@ mice.impute.pmmdump <- function(y, ry, x, ...) {
 par(mfrow = c(3, 2))
 data <- whiteside
 lwd <- 1.5
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    xlab = expression(paste("Temperature (", degree, "C)")), 
+    ylab = "Gas consumption (cubic feet)")
 points(x = 5, y = 3.6, pch = 4, cex = 2, lwd = lwd, col = mdc(2))
-legend(x = "bottomleft", legend = "deleted observation", pch = 4, col = mdc(2), 
-    pt.lwd = lwd, bty = "n", pt.cex = 2)
+legend(x = "bottomleft", legend = "deleted observation", 
+    pch = 4, col = mdc(2), pt.lwd = lwd, bty = "n", pt.cex = 2)
 text(x = 9, y = 6.5, label = "a", cex = 2)
 
 data[47, "Gas"] <- NA
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
-abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), col = mdc(4))
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    xlab = expression(paste("Temperature (", degree, "C)")), 
+    ylab = "Gas consumption (cubic feet)")
+abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), 
+    col = mdc(4))
 points(5, 4.04, lwd = lwd, col = mdc(2), pch = 19)
 text(x = 9, y = 6.5, label = "b", cex = 2)
 
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    xlab = expression(paste("Temperature (", degree, "C)")), 
+    ylab = "Gas consumption (cubic feet)")
 imp <- mice(data, m = 1, maxit = 0)
 pred <- imp$pred
 pred["Gas", "Insul"] <- 0
-imp <- mice(data, m = 5, pred = pred, meth = "norm.nob", maxit = 1, print = FALSE, 
-    seed = 45433)
-abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), col = mdc(4))
-points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), pch = 19)
+imp <- mice(data, m = 5, pred = pred, meth = "norm.nob", 
+    maxit = 1, print = FALSE, seed = 45433)
+abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), 
+    col = mdc(4))
+points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), 
+    pch = 19)
 text(x = 9, y = 6.5, label = "c", cex = 2)
 
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    xlab = expression(paste("Temperature (", degree, "C)")), 
+    ylab = "Gas consumption (cubic feet)")
 imp <- mice(data, m = 1, maxit = 0)
 pred <- imp$pred
 pred["Gas", "Insul"] <- 0
 betadump <- vector("list", 0)
-imp <- mice(data, m = 5, pred = pred, meth = "normdump", maxit = 1, print = FALSE, 
-    seed = 83126)
-abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), col = mdc(4))
+imp <- mice(data, m = 5, pred = pred, meth = "normdump", 
+    maxit = 1, print = FALSE, seed = 83126)
+abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit), 
+    col = mdc(4))
 betadump <- matrix(betadump, nc = 2, byrow = TRUE)
 for (i in 1:5) abline(coef = unlist(betadump[i, ]), col = mdc(5))
-points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), pch = 19)
+points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), 
+    pch = 19)
 text(x = 9, y = 6.5, label = "d", cex = 2)
 
 pch <- c(rep(3, 26), rep(1, 30))
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, pch = pch, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
-imp <- mice(data, m = 5, meth = "norm", maxit = 1, print = FALSE, seed = 11727)
-abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit, subset = Insul == 
-    "Before"), col = mdc(4))
-abline(m2 <- lm(Gas ~ Temp, data = data, na.action = na.omit, subset = Insul == 
-    "After"), col = mdc(4))
-points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), pch = 19)
-legend(x = "bottomleft", legend = c("before insulation", "after insulation"), 
-    pch = c(3, 1), bty = "n", pt.lwd = lwd)
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    pch = pch, xlab = expression(paste("Temperature (", 
+        degree, "C)")), ylab = "Gas consumption (cubic feet)")
+imp <- mice(data, m = 5, meth = "norm", maxit = 1, print = FALSE, 
+    seed = 11727)
+abline(m1 <- lm(Gas ~ Temp, data = data, na.action = na.omit, 
+    subset = Insul == "Before"), col = mdc(4))
+abline(m2 <- lm(Gas ~ Temp, data = data, na.action = na.omit, 
+    subset = Insul == "After"), col = mdc(4))
+points(rep(5, 5), imp$imp$Gas, lwd = lwd, col = mdc(2), 
+    pch = 19)
+legend(x = "bottomleft", legend = c("before insulation", 
+    "after insulation"), pch = c(3, 1), bty = "n", pt.lwd = lwd)
 text(x = 9, y = 6.5, label = "e", cex = 2)
 
 pch <- c(rep(3, 26), rep(1, 30))
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, pch = pch, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    pch = pch, xlab = expression(paste("Temperature (", 
+        degree, "C)")), ylab = "Gas consumption (cubic feet)")
 betadump <- vector("list", 0)
-imp <- mice(data, m = 5, meth = "pmmdump", maxit = 1, print = FALSE, seed = 68006)
+imp <- mice(data, m = 5, meth = "pmmdump", maxit = 1, print = FALSE, 
+    seed = 68006)
 betadump <- matrix(betadump, nc = 3, byrow = TRUE)
 m1 <- lm(Gas ~ Temp + Insul, data = data, na.action = na.omit)
 an <- coef(m1)[1]
@@ -550,16 +597,19 @@ abline(a = an, b = b, col = mdc(4))
 eta <- 0.6
 ylo <- ai + b * (5 - eta)
 yhi <- ai + b * (5 + eta)
-lines(x = c(5 - eta, 5 + eta), y = c(ylo, yhi), lwd = 3, col = mdc(5))
+lines(x = c(5 - eta, 5 + eta), y = c(ylo, yhi), lwd = 3, 
+    col = mdc(5))
 xlo <- (ylo - an)/b
 xhi <- (yhi - an)/b
 lines(x = c(xlo, xhi), y = c(ylo, yhi), lwd = 3, col = mdc(5))
 
-donors <- subset(data, (Insul == "After" & Temp > 5 - eta & Temp < 5 + 
-    eta) | (Insul == "Before" & Temp > xlo & Temp < xhi))
-points(x = donors$Temp, y = donors$Gas, cex = 1.8, col = mdc(5), lwd = lwd)
-legend(x = "bottomleft", legend = c("before insulation", "after insulation"), 
-    pch = c(3, 1), bty = "n", pt.lwd = lwd)
+donors <- subset(data, (Insul == "After" & Temp > 5 - eta & 
+    Temp < 5 + eta) | (Insul == "Before" & Temp > xlo & 
+    Temp < xhi))
+points(x = donors$Temp, y = donors$Gas, cex = 1.8, col = mdc(5), 
+    lwd = lwd)
+legend(x = "bottomleft", legend = c("before insulation", 
+    "after insulation"), pch = c(3, 1), bty = "n", pt.lwd = lwd)
 text(x = 9, y = 6.5, label = "f", cex = 2)
 ```
 
@@ -568,13 +618,13 @@ text(x = 9, y = 6.5, label = "f", cex = 2)
 ### Section 3.2.3 Performance
 
 ``` r
-### number of simulations use nsim <- 10 for testing nsim <- 10000 for
-### the real stuff (TIME CONSUMING)
+### number of simulations use nsim <- 10 for testing nsim
+### <- 10000 for the real stuff (TIME CONSUMING)
 nsim <- 10
 
 ### create data
-createdata <- function(beta0 = 5.49, beta1 = -0.29, sigma = 0.86, n = 50, 
-    mx = 5, sdx = 3) {
+createdata <- function(beta0 = 5.49, beta1 = -0.29, sigma = 0.86, 
+    n = 50, mx = 5, sdx = 3) {
     x <- round(rnorm(n, mean = mx, sd = sdx), 1)
     eps <- rnorm(n, mean = 0, sd = sigma)
     y <- round(beta0 + x * beta1 + eps, 1)
@@ -590,25 +640,28 @@ makemissing <- function(data, p = 0.5) {
 
 ### test function for three imputation functions
 test.impute <- function(data, m = 5, method = "norm", ...) {
-    imp <- mice(data, method = method, m = m, print = FALSE, ridge = 0, 
-        ...)
+    imp <- mice(data, method = method, m = m, print = FALSE, 
+        ridge = 0, ...)
     fit <- with(imp, lm(y ~ x))
     est <- pool(fit)
     tab <- summary(est)
-    return(tab["x", c("est", "se", "lo 95", "hi 95", "fmi", "lambda")])
+    return(tab["x", c("est", "se", "lo 95", "hi 95", "fmi", 
+        "lambda")])
 }
 
 ### put everything together
 simulate <- function(nsim = 10, seed = 41872) {
     set.seed(seed)
     res <- array(NA, dim = c(4, nsim, 6))
-    dimnames(res) <- list(c("predict", "pred + noise", "Bayes MI", "boot MI"), 
-        as.character(1:nsim), c("est", "se", "lo 95", "hi 95", "fmi", "lambda"))
+    dimnames(res) <- list(c("predict", "pred + noise", "Bayes MI", 
+        "boot MI"), as.character(1:nsim), c("est", "se", 
+        "lo 95", "hi 95", "fmi", "lambda"))
     im <- c("norm.predict", "norm.nob", "norm", "norm.boot")
     for (i in 1:nsim) {
         data <- createdata()
         data <- makemissing(data)
-        res[1, i, ] <- test.impute(data, method = im[1], m = 2)
+        res[1, i, ] <- test.impute(data, method = im[1], 
+            m = 2)
         res[2, i, ] <- test.impute(data, method = im[2])
         res[3, i, ] <- test.impute(data, method = im[3])
         res[4, i, ] <- test.impute(data, method = im[4])
@@ -672,8 +725,9 @@ simulate.cca <- function(nsim = 10, seed = 41872) {
 
 ### simulate - MAY BE TIME CONSUMING
 res.cca <- simulate.cca(nsim)
-### cannot be analysed by summarize.results() but it should be obvious
-### how to calculate bias, coverage and aiw
+### cannot be analysed by summarize.results() but it
+### should be obvious how to calculate bias, coverage and
+### aiw
 ```
 
 ### Section 3.2.4 Generating MAR missing data
@@ -683,7 +737,8 @@ res.cca <- simulate.cca(nsim)
 logistic <- function(x) exp(x)/(1 + exp(x))
 set.seed(32881)
 n <- 10000
-y <- mvrnorm(n = n, mu = c(5, 5), Sigma = matrix(c(1, 0.6, 0.6, 1), nrow = 2))
+y <- mvrnorm(n = n, mu = c(5, 5), Sigma = matrix(c(1, 0.6, 
+    0.6, 1), nrow = 2))
 p2.marright <- 1 - logistic(-5 + y[, 1])
 r2.marright <- rbinom(n, 1, p2.marright)
 yobs <- y
@@ -698,10 +753,11 @@ mt <- logistic(-0.75 + abs(grid - 5))
 
 par(mfrow = c(1, 1))
 z <- data.frame(grid, mr, mm, mt)
-matplot(x = z[, 1], y = z[, 2:4], type = "l", lty = 1:3, col = mdc(5), 
-    lwd = 2, xlab = "Y1", ylab = "Missingness in Y2", las = 1)
-legend(x = "top", bty = "n", legend = c("MARRIGHT", "MARMID", "MARTAIL"), 
-    lty = 1:3, lwd = 2, col = mdc(5), cex = 0.8)
+matplot(x = z[, 1], y = z[, 2:4], type = "l", lty = 1:3, 
+    col = mdc(5), lwd = 2, xlab = "Y1", ylab = "Missingness in Y2", 
+    las = 1)
+legend(x = "top", bty = "n", legend = c("MARRIGHT", "MARMID", 
+    "MARTAIL"), lty = 1:3, lwd = 2, col = mdc(5), cex = 0.8)
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-17-1.png" width="576" />
@@ -716,14 +772,18 @@ r2.marmid <- rbinom(n, 1, p2.marright)
 r2.martail <- rbinom(n, 1, p2.martail)
 r2 <- c(r2.marright, r2.marmid, r2.martail)
 r2 <- factor(r2, labels = c("Ymis", "Yobs"))
-typ <- factor(rep(3:1, each = n), labels = c("MARTAIL", "MARMID", "MARRIGHT"))
+typ <- factor(rep(3:1, each = n), labels = c("MARTAIL", 
+    "MARMID", "MARRIGHT"))
 d <- data.frame(y1 = y3[, 1], y2 = y3[, 2], r2 = r2, typ = typ)
-trellis.par.set(box.rectangle = list(col = c(mdc(2), mdc(1)), lwd = 1.2))
-trellis.par.set(box.umbrella = list(col = c(mdc(2), mdc(1)), lwd = 1.2))
-trellis.par.set(plot.symbol = list(col = "transparent", lwd = 1))
-tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE, layout = c(1, 
-    3), xlab = expression(Y2), col = c(mdc(2), mdc(1)), strip = FALSE, 
-    xlim = c(2, 8), strip.left = strip.custom(bg = "grey95"))
+trellis.par.set(box.rectangle = list(col = c(mdc(2), mdc(1)), 
+    lwd = 1.2))
+trellis.par.set(box.umbrella = list(col = c(mdc(2), mdc(1)), 
+    lwd = 1.2))
+trellis.par.set(plot.symbol = list(col = "transparent", 
+    lwd = 1))
+tp <- bwplot(r2 ~ y2 | typ, data = d, horizontal = TRUE, 
+    layout = c(1, 3), xlab = expression(Y2), col = c(mdc(2), 
+        mdc(1)), strip = FALSE, xlim = c(2, 8), strip.left = strip.custom(bg = "grey95"))
 print(tp)
 ```
 
@@ -732,7 +792,8 @@ print(tp)
 ### Section 3.2.2 Imputation from the t-distribution
 
 ``` r
-mice.impute.tf <- function(y, ry, x, gamlss.trace = FALSE, ...) {
+mice.impute.tf <- function(y, ry, x, gamlss.trace = FALSE, 
+    ...) {
     require(gamlss)
     
     # prepare data
@@ -771,9 +832,11 @@ par(mfrow = c(1, 2))
 data <- subset(db, age > 1 & age < 2, c("age", "head"))
 names(data) <- c("age", "hc")
 truehist(data$hc, col = mdc(1), border = "white", xlab = "Head circumference (cm)", 
-    ylab = "Density", ylim = c(0, 0.3), xlim = c(38, 60), nbins = 44)
+    ylab = "Density", ylim = c(0, 0.3), xlim = c(38, 60), 
+    nbins = 44)
 
-mn <- gamlss(hc ~ 1, data = na.omit(data), family = NO, trace = FALSE)
+mn <- gamlss(hc ~ 1, data = na.omit(data), family = NO, 
+    trace = FALSE)
 mu <- coef(mn)
 sigma <- exp(coef(mn, "sigma"))
 cmfine <- seq(38, 60, 0.1)
@@ -783,11 +846,12 @@ mu <- coef(mt)
 sigma <- exp(coef(mt, "sigma"))
 nu <- exp(coef(mt, "nu"))
 lines(cmfine, dTF(cmfine, mu, sigma, nu), lwd = 0.8, lty = 1)
-legend(x = "right", legend = c("normal", "t, df=6.7"), lwd = 0.8, lty = c(2, 
-    1), bty = "n", cex = 0.7)
+legend(x = "right", legend = c("normal", "t, df=6.7"), lwd = 0.8, 
+    lty = c(2, 1), bty = "n", cex = 0.7)
 
-plot(x = data$age, y = data$hc, col = mdc(1), cex = 0.3, xlab = "Age (in years)", 
-    ylab = "Head circumference (cm)", ylim = c(39, 60))
+plot(x = data$age, y = data$hc, col = mdc(1), cex = 0.3, 
+    xlab = "Age (in years)", ylab = "Head circumference (cm)", 
+    ylim = c(39, 60))
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-20-1.png" width="576" />
@@ -807,9 +871,11 @@ syn <- subset(complete(imp), synthetic)
 
 data <- syn
 truehist(data$hc, col = mdc(2), border = "white", xlab = "Head circumference (cm)", 
-    ylab = "Density", ylim = c(0, 0.3), xlim = c(38, 60), nbins = 44)
+    ylab = "Density", ylim = c(0, 0.3), xlim = c(38, 60), 
+    nbins = 44)
 
-mn <- gamlss(hc ~ 1, data = na.omit(data), family = NO, trace = FALSE)
+mn <- gamlss(hc ~ 1, data = na.omit(data), family = NO, 
+    trace = FALSE)
 mu <- coef(mn)
 sigma <- exp(coef(mn, "sigma"))
 cmfine <- seq(38, 60, 0.1)
@@ -819,15 +885,17 @@ mu <- coef(mt)
 sigma <- exp(coef(mt, "sigma"))
 nu <- exp(coef(mt, "nu"))
 lines(cmfine, dTF(cmfine, mu, sigma, nu), lwd = 0.8, lty = 1)
-legend(x = "right", legend = c("normal", paste("t, df=", round(nu, 1), 
-    sep = "")), lwd = 0.8, lty = c(2, 1), bty = "n", cex = 0.7)
+legend(x = "right", legend = c("normal", paste("t, df=", 
+    round(nu, 1), sep = "")), lwd = 0.8, lty = c(2, 1), 
+    bty = "n", cex = 0.7)
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-1.png" width="576" />
 
 ``` r
-plot(x = data$age, y = data$hc, col = mdc(2), cex = 0.3, xlab = "Age (in years)", 
-    ylab = "Head circumference (cm)", ylim = c(39, 60))
+plot(x = data$age, y = data$hc, col = mdc(2), cex = 0.3, 
+    xlab = "Age (in years)", ylab = "Head circumference (cm)", 
+    ylim = c(39, 60))
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-21-2.png" width="576" />
@@ -869,10 +937,12 @@ lwd <- 1.5
 data[47, "Gas"] <- NA
 
 pch <- c(rep(3, 26), rep(1, 30))
-plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, pch = pch, xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
+plot(x = data$Temp, y = data$Gas, col = mdc(1), lwd = lwd, 
+    pch = pch, xlab = expression(paste("Temperature (", 
+        degree, "C)")), ylab = "Gas consumption (cubic feet)")
 betadump <- vector("list", 0)
-imp <- mice(data, m = 5, meth = "pmmdump", maxit = 1, print = FALSE, seed = 68006)
+imp <- mice(data, m = 5, meth = "pmmdump", maxit = 1, print = FALSE, 
+    seed = 68006)
 betadump <- matrix(unlist(betadump), nc = 3, byrow = TRUE)
 m1 <- lm(Gas ~ Temp + Insul, data = data, na.action = na.omit)
 an <- coef(m1)[1]
@@ -883,12 +953,14 @@ abline(a = an, b = b, col = mdc(4))
 ## for (i in 56:56) { abline(a=unlist(betadump[i,1]),
 ## b=unlist(betadump[i,2]), col=mdc(5))
 ## abline(a=unlist(betadump[i,1])+unlist(betadump[i,3]),
-## b=unlist(betadump[i,2]), col=mdc(5)) } points(rep(5,5),imp$imp$Gas,
-## lwd=lwd, col=mdc(2), pch=20)
+## b=unlist(betadump[i,2]), col=mdc(5)) }
+## points(rep(5,5),imp$imp$Gas, lwd=lwd, col=mdc(2),
+## pch=20)
 eta <- 0.6
 ylo <- ai + b * (5 - eta)
 yhi <- ai + b * (5 + eta)
-lines(x = c(5 - eta, 5 + eta), y = c(ylo, yhi), lwd = 3, col = mdc(4))
+lines(x = c(5 - eta, 5 + eta), y = c(ylo, yhi), lwd = 3, 
+    col = mdc(4))
 an <- 7.05
 ai <- an - 1.7
 b <- -0.38
@@ -900,16 +972,19 @@ abline(a = an, b = b, col = mdc(5))
 abline(a = ai, b = b, col = mdc(5))
 lines(x = c(xlo1, xhi1), y = c(ylo, yhi), lwd = 3, col = mdc(5))
 lines(x = c(xlo2, xhi2), y = c(ylo, yhi), lwd = 3, col = mdc(5))
-abline(v = c(5 - eta, 5 + eta), h = c(ylo, yhi), col = mdc(4), lty = 3)
+abline(v = c(5 - eta, 5 + eta), h = c(ylo, yhi), col = mdc(4), 
+    lty = 3)
 rect(xlo1, 0, xhi1, 8, col = hcl(0, 100, 40, 0.05), border = NA)
 rect(xlo2, 0, xhi2, 8, col = hcl(0, 100, 40, 0.05), border = NA)
 # abline(v=c(xlo1,xhi1,xlo2,xhi2),col=mdc(5),lty=3)
 
-donors <- subset(data, (Insul == "After" & Temp > xlo1 & Temp < xhi1) | 
-    (Insul == "Before" & Temp > xlo2 & Temp < xhi2))
-points(x = donors$Temp, y = donors$Gas, cex = 1.8, col = mdc(5), lwd = lwd)
-legend(x = "bottomleft", legend = c("before insulation", "after insulation"), 
-    pch = c(3, 1), bty = "n", pt.lwd = lwd)
+donors <- subset(data, (Insul == "After" & Temp > xlo1 & 
+    Temp < xhi1) | (Insul == "Before" & Temp > xlo2 & Temp < 
+    xhi2))
+points(x = donors$Temp, y = donors$Gas, cex = 1.8, col = mdc(5), 
+    lwd = lwd)
+legend(x = "bottomleft", legend = c("before insulation", 
+    "after insulation"), pch = c(3, 1), bty = "n", pt.lwd = lwd)
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-23-1.png" width="576" />
@@ -957,10 +1032,11 @@ text(fit, use = T, pretty = 0, dig = 3, cex = 0.8)
 
 leaf <- row.names(fit$frame)[fit$where]
 label <- factor(leaf, labels = c(2, 3, 1, 4, 5))
-plot(x = whiteside$Temp, y = whiteside$Gas, type = "n", xlab = expression(paste("Temperature (", 
-    degree, "C)")), ylab = "Gas consumption (cubic feet)")
-text(x = whiteside$Temp, y = whiteside$Gas, label = label, col = mdc(4), 
-    cex = 0.6)
+plot(x = whiteside$Temp, y = whiteside$Gas, type = "n", 
+    xlab = expression(paste("Temperature (", degree, "C)")), 
+    ylab = "Gas consumption (cubic feet)")
+text(x = whiteside$Temp, y = whiteside$Gas, label = label, 
+    col = mdc(4), cex = 0.6)
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-25-1.png" width="576" />
@@ -971,19 +1047,23 @@ text(x = whiteside$Temp, y = whiteside$Gas, label = label, col = mdc(4),
 ### Figure 3.9
 
 par(mfrow = c(1, 2))
-s <- c(100, 0.015, 0.058, 0.02, 0.35, 110, 0.024, 0.074, 0.03, 0.3, 120, 
-    0.043, 0.103, 0.05, 0.25, 130, 0.091, 0.164, 0.1, 0.2, 140, 0.145, 
-    0.185, 0.15, 0.15, 150, 0.307, 0.247, 0.3, 0.1, 160, 0.157, 0.099, 
-    0.15, 0.08, 170, 0.107, 0.049, 0.1, 0.06, 180, 0.055, 0.016, 0.05, 
-    0.04, 190, 0.033, 0.005, 0.03, 0.02, 200, 0.023, 0, 0.02, 0, 210, 0.023, 
-    0, 0.02, 0)
+s <- c(100, 0.015, 0.058, 0.02, 0.35, 110, 0.024, 0.074, 
+    0.03, 0.3, 120, 0.043, 0.103, 0.05, 0.25, 130, 0.091, 
+    0.164, 0.1, 0.2, 140, 0.145, 0.185, 0.15, 0.15, 150, 
+    0.307, 0.247, 0.3, 0.1, 160, 0.157, 0.099, 0.15, 0.08, 
+    170, 0.107, 0.049, 0.1, 0.06, 180, 0.055, 0.016, 0.05, 
+    0.04, 190, 0.033, 0.005, 0.03, 0.02, 200, 0.023, 0, 
+    0.02, 0, 210, 0.023, 0, 0.02, 0)
 sm <- matrix(s, nr = 12, nc = 5, byrow = TRUE)
 snug <- 1.5
-xx <- cbind(sm[, 1] - 5 + snug, sm[, 1] - 5 - snug, sm[, 1] - 5)
-matplot(x = xx[, 3], y = cbind(1 - sm[, 5]), col = mdc(1), type = "p", 
-    lwd = 2, lty = 1, pch = 20, xlab = "Systolic BP (mmHg)", ylab = "Observation probability")
-matplot(x = xx, y = sm[, 2:4], type = "s", col = c(mdc(4), mdc(5), mdc(6)), 
-    lwd = 2, lty = 1, xlab = "Systolic BP (mmHg)", ylab = "Density")
+xx <- cbind(sm[, 1] - 5 + snug, sm[, 1] - 5 - snug, sm[, 
+    1] - 5)
+matplot(x = xx[, 3], y = cbind(1 - sm[, 5]), col = mdc(1), 
+    type = "p", lwd = 2, lty = 1, pch = 20, xlab = "Systolic BP (mmHg)", 
+    ylab = "Observation probability")
+matplot(x = xx, y = sm[, 2:4], type = "s", col = c(mdc(4), 
+    mdc(5), mdc(6)), lwd = 2, lty = 1, xlab = "Systolic BP (mmHg)", 
+    ylab = "Density")
 ```
 
 <img src="FIMD_files/figure-markdown_github/unnamed-chunk-26-1.png" width="576" />
@@ -998,13 +1078,14 @@ library("mice")
 library("lattice")
 
 ### define data sets pattern1-pattern4 with four patterns
-data <- matrix(sample(1:100, 4 * 8 * 3, replace = TRUE), nrow = 8 * 4, 
-    dimnames = list(NULL, c("A", "B", "C")))
+data <- matrix(sample(1:100, 4 * 8 * 3, replace = TRUE), 
+    nrow = 8 * 4, dimnames = list(NULL, c("A", "B", "C")))
 data <- as.data.frame(data)
 data[c(31:32), "A"] <- NA
 data[c(15:16, 22:24, 30:32), "B"] <- NA
 data[c(6:8, 12:16, 17:21, 27:29), "C"] <- NA
-mdpat <- cbind(expand.grid(rec = 8:1, pat = 1:4, var = 1:3), r = as.numeric(as.vector(is.na(data))))
+mdpat <- cbind(expand.grid(rec = 8:1, pat = 1:4, var = 1:3), 
+    r = as.numeric(as.vector(is.na(data))))
 pattern1 <- data[1:8, ]
 pattern2 <- data[9:16, ]
 pattern3 <- data[17:24, ]
@@ -1012,10 +1093,11 @@ pattern4 <- data[25:32, ]
 
 ### Figure 4.1
 types <- c("Univariate", "Monotone", "File matching", "General")
-tp41 <- levelplot(r ~ var + rec | as.factor(pat), data = mdpat, as.table = TRUE, 
-    aspect = "iso", shrink = c(0.9), col.regions = mdc(1:2), colorkey = FALSE, 
-    scales = list(draw = FALSE), xlab = "", ylab = "", between = list(x = 1, 
-        y = 0), strip = strip.custom(bg = "grey95", style = 1, factor.levels = types))
+tp41 <- levelplot(r ~ var + rec | as.factor(pat), data = mdpat, 
+    as.table = TRUE, aspect = "iso", shrink = c(0.9), col.regions = mdc(1:2), 
+    colorkey = FALSE, scales = list(draw = FALSE), xlab = "", 
+    ylab = "", between = list(x = 1, y = 0), strip = strip.custom(bg = "grey95", 
+        style = 1, factor.levels = types))
 print(tp41)
 ```
 
@@ -1084,13 +1166,17 @@ p$rm/(p$rm + p$rr)
 ``` r
 ### Figure 4.2
 par(mfrow = c(2, 2))
-fluxplot(pattern1, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 1.1))
+fluxplot(pattern1, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 
+    1.1))
 text(x = 0.5, y = 1, label = "Univariate")
-fluxplot(pattern2, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 1.1))
+fluxplot(pattern2, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 
+    1.1))
 text(x = 0.5, y = 1, label = "Monotone")
-fluxplot(pattern3, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 1.1))
+fluxplot(pattern3, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 
+    1.1))
 text(x = 0.5, y = 1, label = "File matching")
-fluxplot(pattern4, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 1.1))
+fluxplot(pattern4, main = "", xlim = c(-0.1, 1.1), ylim = c(-0.1, 
+    1.1))
 text(x = 0.5, y = 1, label = "General")
 ```
 
@@ -1107,8 +1193,8 @@ flux(pattern4)[, 1:3]
     ## C 0.625  0.375   0.625
 
 ``` r
-### section 4.3 Monotone data imputation monotone data imputation on
-### three columns
+### section 4.3 Monotone data imputation monotone data
+### imputation on three columns
 data <- nhanes2[, 1:3]
 md.pattern(data)
 ```
@@ -1134,7 +1220,8 @@ ini <- mice(nhanes2, maxit = 0)
 pred <- ini$pred
 pred["bmi", "chl"] <- 0
 pred["hyp", c("chl", "bmi")] <- 0
-imp <- mice(nhanes2, vis = "monotone", pred = pred, maxit = 1, m = 2)
+imp <- mice(nhanes2, vis = "monotone", pred = pred, maxit = 1, 
+    m = 2)
 ```
 
     ## 
@@ -1146,8 +1233,8 @@ imp <- mice(nhanes2, vis = "monotone", pred = pred, maxit = 1, m = 2)
 
 ``` r
 ### Example of slow convergence
-generate <- function(n = c(1000, 4500, 4500, 0), cor = matrix(c(1, 0.9, 
-    0.9, 0.9, 1, 0.7, 0.9, 0.7, 1), nrow = 3)) {
+generate <- function(n = c(1000, 4500, 4500, 0), cor = matrix(c(1, 
+    0.9, 0.9, 0.9, 1, 0.7, 0.9, 0.7, 1), nrow = 3)) {
     require(MASS)
     nt <- sum(n)
     cs <- cumsum(n)
@@ -1162,27 +1249,30 @@ generate <- function(n = c(1000, 4500, 4500, 0), cor = matrix(c(1, 0.9,
     return(data)
 }
 
-impute <- function(data, m = 5, method = "norm", print = FALSE, maxit = 10, 
-    ...) {
+impute <- function(data, m = 5, method = "norm", print = FALSE, 
+    maxit = 10, ...) {
     statistic <- matrix(NA, nrow = maxit, ncol = m)
     for (iter in 1:maxit) {
         if (iter == 1) 
-            imp <- mice(data, m = m, method = method, print = print, maxit = 1, 
-                ...) else imp <- mice.mids(imp, maxit = 1, print = print, ...)
+            imp <- mice(data, m = m, method = method, print = print, 
+                maxit = 1, ...) else imp <- mice.mids(imp, maxit = 1, print = print, 
+            ...)
         statistic[iter, ] <- unlist(with(imp, cor(Y1, Y2))$analyses)
     }
     return(list(imp = imp, statistic = statistic))
 }
 
-simulate <- function(ns = matrix(c(1000, 500, 250, 100, 50, 0, rep(c(4500, 
-    4750, 4875, 4950, 4975, 5000), 2), rep(0, 6)), nrow = 6), m = 5, maxit = 10, 
-    seed = 1, ...) {
+simulate <- function(ns = matrix(c(1000, 500, 250, 100, 
+    50, 0, rep(c(4500, 4750, 4875, 4950, 4975, 5000), 2), 
+    rep(0, 6)), nrow = 6), m = 5, maxit = 10, seed = 1, 
+    ...) {
     if (!missing(seed)) 
         set.seed(seed)
-    s <- cbind(rep(1:nrow(ns), each = maxit * m), apply(ns, 2, rep, each = maxit * 
-        m), rep(1:maxit, each = m), 1:m, NA)
-    colnames(s) <- c("k", "n111", "n101", "n110", "n100", "iteration", 
-        "m", "rY1Y2")
+    s <- cbind(rep(1:nrow(ns), each = maxit * m), apply(ns, 
+        2, rep, each = maxit * m), rep(1:maxit, each = m), 
+        1:m, NA)
+    colnames(s) <- c("k", "n111", "n101", "n110", "n100", 
+        "iteration", "m", "rY1Y2")
     for (k in 1:nrow(ns)) {
         data <- generate(ns[k, ], ...)
         r <- impute(data, m = m, maxit = maxit, ...)
@@ -1197,13 +1287,14 @@ slow.demo <- simulate(maxit = 150, seed = 62771)
 
 ``` r
 ### Figure 4.3
-labels <- c("90% missing", "95% missing", "97.5% missing", "99% missing", 
-    "99.5% missing", "100% missing")
-tp43 <- xyplot(rY1Y2 ~ iteration | as.factor(k), group = m, data = slow.demo, 
-    layout = c(3, 2), type = "l", as.table = TRUE, ylab = "Correlation between Y1 and Y2", 
-    xlab = "Iteration", col = mdc(3), scales = list(y = list(alternating = 1, 
-        tck = c(1, 0))), strip = strip.custom(bg = "grey95", style = 1, 
-        factor.levels = labels))
+labels <- c("90% missing", "95% missing", "97.5% missing", 
+    "99% missing", "99.5% missing", "100% missing")
+tp43 <- xyplot(rY1Y2 ~ iteration | as.factor(k), group = m, 
+    data = slow.demo, layout = c(3, 2), type = "l", as.table = TRUE, 
+    ylab = "Correlation between Y1 and Y2", xlab = "Iteration", 
+    col = mdc(3), scales = list(y = list(alternating = 1, 
+        tck = c(1, 0))), strip = strip.custom(bg = "grey95", 
+        style = 1, factor.levels = labels))
 print(tp43)
 ```
 
@@ -1225,7 +1316,8 @@ djm$reg <- as.integer(djm$reg)
 dfcs <- boys[select, -4]
 
 ### impute according to joint multivariate normal
-jm.10 <- mice(djm, method = "norm", seed = 93005, m = 10, print = FALSE)
+jm.10 <- mice(djm, method = "norm", seed = 93005, m = 10, 
+    print = FALSE)
 
 ### impute according to predictive mean matching
 pmm.10 <- mice(djm, seed = 71332, m = 10, print = FALSE)
@@ -1234,8 +1326,8 @@ pmm.10 <- mice(djm, seed = 71332, m = 10, print = FALSE)
 fcs.10 <- mice(dfcs, seed = 81420, m = 10, print = FALSE)
 
 ### Figure 4.4
-tp44 <- xyplot(jm.10, gen ~ age | .imp, subset = as.integer(.imp) < 7, 
-    xlab = "Age", ylab = "Genital stage")
+tp44 <- xyplot(jm.10, gen ~ age | .imp, subset = as.integer(.imp) < 
+    7, xlab = "Age", ylab = "Genital stage")
 print(tp44)
 ```
 
@@ -1243,8 +1335,8 @@ print(tp44)
 
 ``` r
 ### Figure 4.5
-tp45 <- xyplot(fcs.10, gen ~ age | .imp, subset = as.integer(.imp) < 7, 
-    xlab = "Age", ylab = "Genital stage")
+tp45 <- xyplot(fcs.10, gen ~ age | .imp, subset = as.integer(.imp) < 
+    7, xlab = "Age", ylab = "Genital stage")
 print(tp45)
 ```
 
