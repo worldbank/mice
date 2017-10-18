@@ -107,5 +107,9 @@ The `mice` [software](https://www.jstatsoft.org/v45/i03/paper) was published in 
 [Amazon](https://www.amazon.com/Flexible-Imputation-Missing-Interdisciplinary-Statistics/dp/1439868247/ref=pd_sim_14_2?_encoding=UTF8&pd_rd_i=1439868247&pd_rd_r=DC8AYZZZZKF9GZSVP6PK&pd_rd_w=Z2PJQ&pd_rd_wg=3iuSi&psc=1&refRID=DC8AYZZZZKF9GZSVP6PK)). 
 
 
+## Example code
+
+Adapting working example code is an easy way to start. Take a look The [code page](FIMD.md) of *Flexible Imputation of Missing Data*.
+
 ## References
 
