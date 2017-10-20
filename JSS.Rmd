@@ -19,7 +19,7 @@ set.seed(92622)
 
 This page contains the R code from the article [mice: Multivariate Imputation by Chained Equations in R](https://www.jstatsoft.org/v45/i03/paper) published in the Journal of Statistical Software [@vanbuuren2011a]. For other examples using MICE see [MICE: Multivariate Imputation by Chained Equations](http://stefvanbuuren.github.io/mice/). 
 
-The code was tested in R 3.4.2 using mice 2.44.
+The [source code](https://raw.githubusercontent.com/stefvanbuuren/mice/gh-pages/JSS.Rmd) was tested in R 3.4.2 using mice 2.44.
 
 ### Install packages needed to run code
 ```{r}
