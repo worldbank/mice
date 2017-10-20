@@ -93,7 +93,7 @@ The `mice` [software](https://www.jstatsoft.org/v45/i03/paper) was published in 
 Example code
 ------------
 
-Adapting working example code is an easy way to start. Take a look The [code page](FIMD.md) of *Flexible Imputation of Missing Data*.
+Adapting working example code is an easy way to start. Take a look at the [code page](FIMD.md) of *Flexible Imputation of Missing Data* or at the [code page](JSS.md) of *mice: Multivariate Imputation by Chained Equations in R*.
 
 References
 ----------
