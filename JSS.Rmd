@@ -2,9 +2,7 @@
 title: "mice: Multivariate Imputation by Chained Equations in R"
 author: "Stef van Buuren, Karin Groothuis-Oudshoorn"
 date: "`r Sys.Date()`"
-output:
-  md_document:
-    variant: markdown_github
+output: rmarkdown::html_vignette
 bibliography: refs.bibtex
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
