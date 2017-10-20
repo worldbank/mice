@@ -19,7 +19,7 @@ if (length(new.packages)) install.packages(new.packages)
 library("mice")
 ```
 
-#### chunk number 5: example2 eval=FALSE
+#### chunk number 5: example2
 
 ``` r
 nhanes
@@ -188,7 +188,7 @@ imp$imp$bmi
     ## 16 29.6 30.1 27.4 30.1 25.5
     ## 21 33.2 30.1 35.3 22.0 22.7
 
-#### chunk number 13: example4 eval=FALSE
+#### chunk number 13: example4
 
 ``` r
 complete(imp)
@@ -221,7 +221,7 @@ complete(imp)
     ## 24   3 24.9   1 284
     ## 25   2 27.4   1 186
 
-#### chunk number 14: stripplotcmd eval=FALSE
+#### chunk number 14: stripplotcmd
 
 ``` r
 stripplot(imp, pch = 20, cex = 1.2)
@@ -229,7 +229,7 @@ stripplot(imp, pch = 20, cex = 1.2)
 
 <img src="JSS_files/figure-markdown_github/unnamed-chunk-12-1.png" width="636.48" />
 
-#### chunk number 16: xyplotcmd eval=FALSE
+#### chunk number 16: xyplotcmd
 
 ``` r
 xyplot(imp, bmi ~ chl | .imp, pch = 20, cex = 1.4)
@@ -298,13 +298,13 @@ round(summary(pool(fit)), 2)
 
 ### 3.2 Univariate imputation methods
 
-#### chunk number 23: models1 eval=FALSE
+#### chunk number 23: models1
 
 ``` r
 imp <- mice(nhanes, method = "norm", print = FALSE)
 ```
 
-#### chunk number 24: models2 eval=FALSE
+#### chunk number 24: models2
 
 ``` r
 imp <- mice(nhanes, meth = c("", "norm", "pmm", "mean"), 
@@ -323,21 +323,21 @@ str(nhanes2)
     ##  $ hyp: Factor w/ 2 levels "no","yes": NA 1 1 NA 1 NA 1 1 1 NA ...
     ##  $ chl: num  NA 187 187 NA 113 184 118 187 238 NA ...
 
-#### chunk number 26: models4 eval=FALSE
+#### chunk number 26: models4
 
 ``` r
 imp <- mice(nhanes2, me = c("polyreg", "pmm", "logreg", 
     "norm"), print = FALSE)
 ```
 
-#### chunk number 27: models5 eval=FALSE
+#### chunk number 27: models5
 
 ``` r
 imp <- mice(nhanes2, meth = c("", "", "logreg", "norm"), 
     print = FALSE)
 ```
 
-#### chunk number 28: models6 eval=FALSE
+#### chunk number 28: models6
 
 ``` r
 mice(nhanes2, defaultMethod = c("norm", "logreg", "polyreg", 
@@ -517,7 +517,7 @@ quickpred(nhanes)
     ## hyp   1   0   0   1
     ## chl   1   1   1   0
 
-#### chunk number 39: quickpred5 eval=FALSE
+#### chunk number 39: quickpred5
 
 ``` r
 imp <- mice(nhanes, pred = quickpred(nhanes, minpuc = 0.25, 
@@ -657,7 +657,7 @@ imp.sum <- mice(cbind(boys, mat = NA), pred = pred, meth = meth,
     maxit = 20, seed = 10948, print = FALSE)
 ```
 
-#### chunk number 48: sumscore3 eval=FALSE
+#### chunk number 48: sumscore3
 
 ``` r
 xyplot(imp.sum, mat ~ age | .imp, na = gen | phb | tv, subset = .imp == 
@@ -724,7 +724,7 @@ imp <- mice(nhanes2.ext, meth = meth, pred = pred, seed = 1,
 
     ## Warning in log(chl): NaNs produced
 
-#### chunk number 54: squeeze2 eval=FALSE
+#### chunk number 54: squeeze2
 
 ``` r
 meth["lchl"] <- "~log(squeeze(chl, bounds=c(100,300)))"
@@ -801,7 +801,7 @@ imp <- mice(cbind(boys, mat = NA), pred = pred, meth = meth,
     post = post, maxit = 10, print = FALSE)
 ```
 
-#### chunk number 58: post4 eval=FALSE
+#### chunk number 58: post4
 
 ``` r
 xyplot(imp, mat ~ age | .imp, na = gen | phb | tv, subset = .imp == 
@@ -834,7 +834,7 @@ imp$vis
     ##     bmi     hyp     chl bmi.chl 
     ##       2       3       4       5
 
-#### chunk number 62: visit3 eval=FALSE
+#### chunk number 62: visit3
 
 ``` r
 vis <- imp$vis
@@ -850,14 +850,14 @@ imp <- mice(nhanes2.ext, meth = meth, pred = pred, vis = vis,
     print = FALSE)
 ```
 
-#### chunk number 63: visit4 eval=FALSE
+#### chunk number 63: visit4
 
 ``` r
 imp <- mice(nhanes2.ext, meth = meth, pred = pred, vis = c(2, 
     4, 5, 3), print = FALSE)
 ```
 
-#### chunk number 64: visit5 eval=FALSE
+#### chunk number 64: visit5
 
 ``` r
 imp <- mice(nhanes2.ext, meth = meth, pred = pred, vis = "monotone", 
@@ -928,7 +928,7 @@ meth["hgt"] <- "~I(100*sqrt(wgt/bmi))"
 # seed = 9212)
 ```
 
-#### chunk number 70: convergence1plotcmd eval=FALSE
+#### chunk number 70: convergence1plotcmd
 
 ``` r
 # plot(imp1, c('hgt', 'wgt', 'bmi'))
@@ -944,7 +944,7 @@ imp2 <- mice(boys, meth = meth, maxit = 20, print = FALSE,
     seed = 9212)
 ```
 
-#### chunk number 73: convergence2plotcmd eval=FALSE
+#### chunk number 73: convergence2plotcmd
 
 ``` r
 plot(imp2, c("hgt", "wgt", "bmi"))
@@ -960,7 +960,7 @@ plot(imp.idx, c("hgt", "wgt", "bmi"))
 
 <img src="JSS_files/figure-markdown_github/unnamed-chunk-67-1.png" width="636.48" />
 
-#### chunk number 77: convergence4plotcmd eval=FALSE
+#### chunk number 77: convergence4plotcmd
 
 ``` r
 plot(imp.idx, c("hc", "gen", "phb"), tick.number = 3)
@@ -1027,7 +1027,7 @@ ps <- rep(rowMeans(sapply(fit.hc$analyses, fitted.values)),
     6)
 ```
 
-#### chunk number 85: propensityplotcmd eval=FALSE
+#### chunk number 85: propensityplotcmd
 
 ``` r
 xyplot(imp.kendall, hc ~ ps | .imp, pch = c(1, 20), cex = c(0.8, 
@@ -1044,7 +1044,7 @@ hc <- complete(imp.kendall, "long", TRUE)$hc
 fit <- lm(hc ~ poly(ps, 4))
 ```
 
-#### chunk number 88: residuals2 eval=FALSE
+#### chunk number 88: residuals2
 
 ``` r
 densityplot(~residuals(fit), group = hc.na, plot.points = FALSE, 
@@ -1329,7 +1329,7 @@ stat$p
 
     ## [1] 0.0456
 
-#### chunk number 100: ownfunction eval=FALSE
+#### chunk number 100: ownfunction
 
 ``` r
 mice.impute.myfunc <- mice.impute.pmm
@@ -1404,7 +1404,7 @@ mydata <- mitools::imputationList(lapply(1:5, complete,
     x = imp))
 ```
 
-#### chunk number 103: mitools2 eval=FALSE
+#### chunk number 103: mitools2
 
 ``` r
 fit <- with(mydata, expr = lm(chl ~ age + bmi))
