@@ -1,5 +1,7 @@
 This page contains the R code from the book *Flexible Imputation of Missing Data* (Buuren 2012). For other examples using MICE see [MICE: Multivariate Imputation by Chained Equations](http://stefvanbuuren.github.io/mice/).
 
+The code was tested in R 3.4.2 using mice 2.44.
+
 Chapter 1 Introduction
 ----------------------
 
