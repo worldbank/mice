@@ -5,3 +5,5 @@ mice.Rproj
 .Rproj.user
 *_cache
 _site/
+inst/
+src/
