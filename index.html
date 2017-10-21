@@ -71,7 +71,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="mice-multivariate-imputation-by-chained-equations" class="section level1">
 <h1><a href="http://stefvanbuuren.github.io/mice/">MICE: Multivariate Imputation by Chained Equations</a></h1>
-<p>The <a href="https://cran.r-project.org/package=mice"><code>mice</code></a> package implements a method to deal with missing data. The package creates multiple imputations (replacement values) for multivariate missing data. The method is based on Fully Conditional Specification, where each incomplete variable is imputed by a separate model. The <code>MICE</code> algorithm can impute mixes of continuous, binary, unordered categorical and ordered categorical data. In addition, MICE can impute continuous two-level data, and maintain consistency between imputations by means of passive imputation. Many diagnostic plots are implemented to inspect the quality of the imputations.</p>
+<div id="software" class="section level2">
+<h2>Software</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://cran.r-project.org/package=mice"><code>mice</code> package at CRAN</a></li>
+<li><a href="https://github.com/stefvanbuuren/mice">mice GitHUB repository</a></li>
+</ol>
+</div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>The <code>mice</code> package can be installed from CRAN as follows:</p>
@@ -80,8 +86,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="dt">repo =</span> <span class="st">&quot;stefvanbuuren/mice&quot;</span>)</code></pre></div>
 </div>
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="capabilities-of-mice-package" class="section level2">
+<h2>Capabilities of <code>mice</code> package</h2>
 <p>The <code>mice</code> package contains functions to</p>
 <ul>
 <li>Inspect the missing data pattern</li>
@@ -92,8 +98,8 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <li>Store and export the imputed data in various formats</li>
 <li>Generate simulated incomplete data</li>
 <li>Incorporate custom imputation methods</li>
+<li>Choose which cells to impute</li>
 </ul>
-<p>New feature in version 2.41: User may choose which cells to impute.</p>
 </div>
 <div id="main-functions" class="section level2">
 <h2>Main functions</h2>
@@ -129,14 +135,15 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 </tbody>
 </table>
 </div>
-<div id="one-day-course-in-mice" class="section level2">
-<h2>One-day course in <code>mice</code></h2>
-<p>If you are new to <code>mice</code> consider studying the materials of our one-day course in Winnigpeg. The materials are at <a href="https://stefvanbuuren.github.io/Winnipeg/">https://stefvanbuuren.github.io/Winnipeg</a>.</p>
+<div id="course-materials" class="section level2">
+<h2>Course materials</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://stefvanbuuren.github.io/Winnipeg/">Handling Missing Data in <code>R</code> with <code>mice</code></a></li>
+<li><a href="https://stefvanbuuren.github.io/RECAPworkshop/">Statistical Methods for combined data sets</a></li>
+</ol>
 </div>
-<div id="micevignettes" class="section level2">
-<h2>miceVignettes</h2>
-<p>A detailed series of vignettes that walk you through solving realistic inference problems with mice. These vignettes overlap with the one-day course.</p>
-<p>We suggest going through these vignettes in the following order</p>
+<div id="vignettes" class="section level2">
+<h2>Vignettes</h2>
 <ol style="list-style-type: decimal">
 <li><a href="https://gerkovink.github.io/miceVignettes/Ad_hoc_and_mice/Ad_hoc_methods.html">Ad hoc methods and the MICE algorithm</a></li>
 <li><a href="https://gerkovink.github.io/miceVignettes/Convergence_pooling/Convergence_and_pooling.html">Convergence and pooling</a></li>
@@ -145,6 +152,13 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <li><a href="https://gerkovink.github.io/miceVignettes/Multi_level/Multi_level_data.html">Imputing multilevel data</a></li>
 <li><a href="https://gerkovink.github.io/miceVignettes/Sensitivity_analysis/Sensitivity_analysis.html">Sensitivity analysis with <code>mice</code></a></li>
 <li><a href="https://stefvanbuuren.github.io/mice/ampute.html">Generate missing values with <code>ampute</code></a></li>
+</ol>
+</div>
+<div id="code-from-publications" class="section level2">
+<h2>Code from publications</h2>
+<ol style="list-style-type: decimal">
+<li><a href="http://stefvanbuuren.github.io/mice/FIMD.html">Flexible Imputation of Missing Data</a></li>
+<li><a href="http://stefvanbuuren.github.io/mice/JSS.html">mice: Multivariate Imputation by Chained Equations in R</a></li>
 </ol>
 </div>
 <div id="related-packages" class="section level2">
@@ -163,11 +177,14 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 </div>
 <div id="further-reading" class="section level2">
 <h2>Further reading</h2>
-<p>The <code>mice</code> <a href="https://www.jstatsoft.org/v45/i03/paper">software</a> was published in the Journal of Statistical Software <span class="citation">(Buuren and Groothuis-Oudshoorn 2011)</span>. The first application of the method concerned <a href="http://www.stefvanbuuren.nl/publications/Multiple%20imputation%20-%20Stat%20Med%201999.pdf">missing blood pressure</a> data <span class="citation">(Buuren, Boshuizen, and Knook 1999)</span>. The term <a href="http://www.stefvanbuuren.nl/publications/FCS%20in%20multivariate%20imputation%20-%20JSCS%202006.pdf">Fully Conditional Specification</a> was introduced in 2006 to describe a general class of methods that specify imputations model for multivariate data as a set of conditional distributions <span class="citation">(Buuren et al. 2006)</span>. Details about imputing <a href="http://www.stefvanbuuren.nl/publications/MI%20by%20FCS%20-%20SMMR%202007.pdf">mixes of numerical and categorical data</a> can be found in <span class="citation">(Buuren 2007)</span>. <a href="http://www.ejbrm.com/issue/download.html?idArticle=450">Wulff and Ejlskov</a> provide a comprehensive overview of MICE. Many more details and applications can be found in the book <em>Flexible Imputation of Missing Data</em> <span class="citation">(Buuren 2012)</span> (see <a href="https://www.crcpress.com/Flexible-Imputation-of-Missing-Data/van-Buuren/p/book/9781439868249">Chapman &amp; Hall/CRC</a> or <a href="https://www.amazon.com/Flexible-Imputation-Missing-Interdisciplinary-Statistics/dp/1439868247/ref=pd_sim_14_2?_encoding=UTF8&amp;pd_rd_i=1439868247&amp;pd_rd_r=DC8AYZZZZKF9GZSVP6PK&amp;pd_rd_w=Z2PJQ&amp;pd_rd_wg=3iuSi&amp;psc=1&amp;refRID=DC8AYZZZZKF9GZSVP6PK">Amazon</a>).</p>
-</div>
-<div id="example-code" class="section level2">
-<h2>Example code</h2>
-<p>Adapting working example code is an easy way to start. Take a look The <a href="http://stefvanbuuren.github.io/mice/FIMD.html">code page</a> of <em>Flexible Imputation of Missing Data</em>, or at the <a href="http://stefvanbuuren.github.io/mice/JSS.html">code page</a> of <em>mice: Multivariate Imputation by Chained Equations in R</em>.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.jstatsoft.org/v45/i03/paper">Article</a> in the Journal of Statistical Software <span class="citation">(Buuren and Groothuis-Oudshoorn 2011)</span>.</li>
+<li>The first application on <a href="http://www.stefvanbuuren.nl/publications/Multiple%20imputation%20-%20Stat%20Med%201999.pdf">missing blood pressure</a> data <span class="citation">(Buuren, Boshuizen, and Knook 1999)</span>.</li>
+<li>Term <a href="http://www.stefvanbuuren.nl/publications/FCS%20in%20multivariate%20imputation%20-%20JSCS%202006.pdf">Fully Conditional Specification</a> describes a general class of methods that specify imputations model for multivariate data as a set of conditional distributions <span class="citation">(Buuren et al. 2006)</span>.</li>
+<li>Details about imputing <a href="http://www.stefvanbuuren.nl/publications/MI%20by%20FCS%20-%20SMMR%202007.pdf">mixes of numerical and categorical data</a> can be found in <span class="citation">(Buuren 2007)</span>.</li>
+<li><a href="http://www.ejbrm.com/issue/download.html?idArticle=450">Wulff and Ejlskov</a> provide a comprehensive overview of MICE.</li>
+<li>Many more details and applications can be found in the book <em>Flexible Imputation of Missing Data</em> <span class="citation">(Buuren 2012)</span> (see <a href="https://www.crcpress.com/Flexible-Imputation-of-Missing-Data/van-Buuren/p/book/9781439868249">Chapman &amp; Hall/CRC</a> or <a href="https://www.amazon.com/Flexible-Imputation-Missing-Interdisciplinary-Statistics/dp/1439868247/ref=pd_sim_14_2?_encoding=UTF8&amp;pd_rd_i=1439868247&amp;pd_rd_r=DC8AYZZZZKF9GZSVP6PK&amp;pd_rd_w=Z2PJQ&amp;pd_rd_wg=3iuSi&amp;psc=1&amp;refRID=DC8AYZZZZKF9GZSVP6PK">Amazon</a>).</li>
+</ol>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
