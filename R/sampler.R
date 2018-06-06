@@ -1,3 +1,9 @@
+### getOper abd getTrainOper are from topepo/caret
+### (by sazari)
+getOper <- function(x) if(x)  `%dopar%` else  `%do%`
+getTrainOper <- function(x) if(x)  `%dopar%` else  `%do%`
+
+
 sampler <- function(data, m, where, imp, blocks, method, visitSequence, 
                     predictorMatrix, formulas, blots, post, 
                     fromto, printFlag, ...)
