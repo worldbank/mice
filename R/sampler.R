@@ -23,7 +23,8 @@ sampler <- function(data, m, where, imp, blocks, method, visitSequence,
   if (maxit >= 1) {
     if (printFlag)
       cat("\n iter imp variable")
-    for (k in from:to) {
+    result <- foreach (k = from:to) %dopar% {      
+#    for (k in from:to) {
       # begin k loop : main iteration loop
       iteration <- k
       for (i in seq_len(m)) {
