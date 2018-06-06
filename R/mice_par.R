@@ -1,4 +1,4 @@
-# 'Parallel wrapper for mice'
+# 'Parallel wrapper for mice
 #
 #'@export
 mice_par <- function(data, m = 5, 
