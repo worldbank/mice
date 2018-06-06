@@ -15,7 +15,7 @@ mice_par <- function(data, m = 5,
                  data.init = NULL,
                  ...) {
 
-  retVaL <- mice (data, m = 5, 
+  retVal <- mice (data, m = 5, 
                        method = NULL,
                        predictorMatrix,
                        where = NULL,
